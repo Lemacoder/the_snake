@@ -97,7 +97,8 @@ class Snake(GameObject):
                              head_y + self.direction[1] * GRID_SIZE)
         # Проверяем на столкновение со стенами
         if (new_head_position[0] < 0 or new_head_position[0] >= SCREEN_WIDTH
-                or new_head_position[1] < 0 or new_head_position[1] >= SCREEN_HEIGHT):
+                or new_head_position[1] < 0 
+                or new_head_position[1] >= SCREEN_HEIGHT):
             return False  # Столкновение со стеной
 
         # Добавляем новую голову в начало списка позиций
