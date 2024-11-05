@@ -43,7 +43,7 @@ class GameObject:
         self.body_color = body_color if body_color is not None else SNAKE_COLOR
 
     def draw(self):
-        """Метод для отрисовки объекта. 
+        """Метод для отрисовки объекта.
         Должен быть переопределен в дочерних классах."""
         pass
 
