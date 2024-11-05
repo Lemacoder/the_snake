@@ -123,7 +123,10 @@ class Snake(GameObject):
         pygame.draw.rect(screen, BORDER_COLOR, head_rect, 1)
 
     def reset(self):
-        """Сбрасывает змейку в начальное состояние после столкновения с собой."""
+        """
+        Сбрасывает змейку в начальное 
+        состояние после столкновения с собой.
+        """
         self.length = 1
         self.positions = [(GRID_WIDTH // 2 * GRID_SIZE,
                            GRID_HEIGHT // 2 * GRID_SIZE)]
@@ -131,7 +134,10 @@ class Snake(GameObject):
 
 
 def handle_keys(snake):
-    """Обрабатывает нажатия клавиш для изменения направления движения змейки."""
+    """
+    Обрабатывает нажатия клавиш для 
+    изменения направления движения змейки.
+    """
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
             pygame.quit()
