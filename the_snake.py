@@ -34,7 +34,7 @@ clock = pygame.time.Clock()
 
 class GameObject:
     """Базовый класс для игровых объектов."""
-    
+
     def __init__(self, position=None, body_color=None):
         """Инициализация координат и цвета объекта."""
         if position is None:
@@ -49,7 +49,7 @@ class GameObject:
 
 class Apple(GameObject):
     """Класс для яблока."""
-    
+
     def __init__(self):
         """Инициализация яблока с случайной позицией."""
         super().__init__(self.randomize_position(), APPLE_COLOR)
@@ -69,10 +69,11 @@ class Apple(GameObject):
 
 class Snake(GameObject):
     """Класс для змейки."""
-    
+
     def __init__(self):
         """Инициализация змейки с начальной позицией и направлением."""
-        super().__init__((GRID_WIDTH // 2 * GRID_SIZE, GRID_HEIGHT // 2 * GRID_SIZE), SNAKE_COLOR)
+        super().__init__((GRID_WIDTH // 2 * GRID_SIZE,
+                          GRID_HEIGHT // 2 * GRID_SIZE), SNAKE_COLOR)
         self.length = 1
         self.positions = [self.position]
         self.direction = RIGHT
@@ -82,8 +83,8 @@ class Snake(GameObject):
         """Обновляет направление движения змейки."""
         if self.next_direction:
             # Проверяем на возможность смены направления
-            if (self.next_direction[0] * -1 != self.direction[0] or 
-                self.next_direction[1] * -1 != self.direction[1]):
+            if (self.next_direction[0] * -1 != self.direction[0]
+                    or self.next_direction[1] * -1 != self.direction[1]):
                 self.direction = self.next_direction
 
     def move(self):
@@ -93,8 +94,8 @@ class Snake(GameObject):
                              head_y + self.direction[1] * GRID_SIZE)
 
         # Проверяем на столкновение со стенами
-        if (new_head_position[0] < 0 or new_head_position[0] >= SCREEN_WIDTH or 
-            new_head_position[1] < 0 or new_head_position[1] >= SCREEN_HEIGHT):
+        if (new_head_position[0] < 0 or new_head_position[0] >= SCREEN_WIDTH
+                or new_head_position[1] < 0 or new_head_position[1] >= SCREEN_HEIGHT):
             return False  # Столкновение со стеной
 
         # Добавляем новую голову в начало списка позиций
@@ -121,7 +122,8 @@ class Snake(GameObject):
     def reset(self):
         """Сбрасывает змейку в начальное состояние после столкновения с собой."""
         self.length = 1
-        self.positions = [(GRID_WIDTH // 2 * GRID_SIZE, GRID_HEIGHT // 2 * GRID_SIZE)]
+        self.positions = [(GRID_WIDTH // 2 * GRID_SIZE,
+                           GRID_HEIGHT // 2 * GRID_SIZE)]
         self.direction = RIGHT
 
 
@@ -131,7 +133,7 @@ def handle_keys(snake):
         if event.type == pygame.QUIT:
             pygame.quit()
             raise SystemExit
-        
+
         if event.type == pygame.KEYDOWN:
             if event.key == pygame.K_UP and snake.direction != DOWN:
                 snake.next_direction = UP
@@ -156,9 +158,9 @@ def main():
         clock.tick(SPEED)
 
         handle_keys(snake)
-        
+
         snake.update_direction()
-        
+
         # Двигаем змейку и проверяем столкновение со стенами
         if not snake.move():
             snake.reset()  # Сбрасываем игру при столкновении со стеной
