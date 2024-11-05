@@ -43,8 +43,11 @@ class GameObject:
         self.body_color = body_color if body_color is not None else SNAKE_COLOR
 
     def draw(self):
-        """Метод для отрисовки объекта.
-        Должен быть переопределен в дочерних классах."""
+        """
+        Метод для отрисовки объекта.
+        Должен быть переопределен в дочерних классах.
+        
+        """
         pass
 
 
@@ -93,7 +96,6 @@ class Snake(GameObject):
         head_x, head_y = self.positions[0]
         new_head_position = (head_x + self.direction[0] * GRID_SIZE,
                              head_y + self.direction[1] * GRID_SIZE)
-
         # Проверяем на столкновение со стенами
         if (new_head_position[0] < 0 or new_head_position[0] >= SCREEN_WIDTH
                 or new_head_position[1] < 0 or new_head_position[1] >= SCREEN_HEIGHT):
