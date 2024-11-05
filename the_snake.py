@@ -97,7 +97,7 @@ class Snake(GameObject):
                              head_y + self.direction[1] * GRID_SIZE)
         # Проверяем на столкновение со стенами
         if (new_head_position[0] < 0 or new_head_position[0] >= SCREEN_WIDTH
-                or new_head_position[1] < 0 
+                or new_head_position[1] < 0
                 or new_head_position[1] >= SCREEN_HEIGHT):
             return False  # Столкновение со стеной
 
@@ -124,7 +124,7 @@ class Snake(GameObject):
 
     def reset(self):
         """
-        Сбрасывает змейку в начальное 
+        Сбрасывает змейку в начальное
         состояние после столкновения с собой.
         """
         self.length = 1
@@ -135,7 +135,7 @@ class Snake(GameObject):
 
 def handle_keys(snake):
     """
-    Обрабатывает нажатия клавиш для 
+    Обрабатывает нажатия клавиш для
     изменения направления движения змейки.
     """
     for event in pygame.event.get():
